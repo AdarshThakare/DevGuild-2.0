@@ -1,7 +1,6 @@
-// app/signin/page.tsx (Assuming you’re using App Router)
-
 import { auth, signIn, signOut } from "@/auth";
 import Image from "next/image";
+import { ModeToggle } from "../components/ModeToggle";
 
 // This is a Server Component
 export default async function SignInPage() {
@@ -38,6 +37,7 @@ export default async function SignInPage() {
             >
               Logout
             </button>
+            <ModeToggle />
           </form>
         </>
       ) : (

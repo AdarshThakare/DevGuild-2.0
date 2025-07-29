@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins, Outfit } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "../components/ThemeProvider";
+import Sidebar from "@/components/navigation/Sidebar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  weight: ["200", "300", "500", "600", "700", "800"],
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
+  weight: ["200", "300", "500", "600", "700", "800"],
   subsets: ["latin"],
 });
 
@@ -23,11 +25,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${poppins.className}  antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="min-h-screen relative">
+            <Sidebar />
+          </div>
+          <div className="">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

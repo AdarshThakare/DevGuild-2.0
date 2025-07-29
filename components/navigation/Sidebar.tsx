@@ -2,8 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import SignOutButton from "./SignOutButton";
+import { useSidebarStore } from "@/app/store/SidebarStore";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -17,9 +18,9 @@ const NAV_LINKS = [
 ];
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const sidebarRef = useRef<HTMLDivElement | null>(null);
+  const { isOpen, setIsOpen } = useSidebarStore();
   const pathname = usePathname();
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -34,10 +35,11 @@ const Sidebar = () => {
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, setIsOpen]);
 
   const renderLink = (href: string, label: string) => {
     const isActive = pathname === href;
@@ -66,31 +68,21 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="min-h-screen relative bg-white dark:bg-black text-gray-900 dark:text-white">
-      <button
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="fixed top-4 left-4 z-[10] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
-      >
-        ☰
-      </button>
-
-      <div
-        ref={sidebarRef}
-        className={`fixed top-0 left-0 z-50 h-full w-64 bg-white dark:bg-gray-900 transition-transform duration-300 border-r border-gray-200 dark:border-gray-700 shadow-lg ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <Image
-          src="/devguild_logo.png"
-          alt="DEVELOPERS' GUILD LOGO"
-          width={200}
-          height={200}
-          className="my-8 ms-5 rounded-4xl"
-        />
-
-        {NAV_LINKS.map(({ href, label }) => renderLink(href, label))}
-        <SignOutButton />
-      </div>
+    <div
+      ref={sidebarRef}
+      className={`fixed top-0 left-0 z-50 h-full w-64 bg-white dark:bg-gray-900 transition-transform duration-300 border-r border-gray-200 dark:border-gray-700 shadow-lg ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
+      <Image
+        src="/devlogo.png"
+        alt="DEVELOPERS' GUILD LOGO"
+        width={200}
+        height={200}
+        className="my-8 ms-5 rounded-4xl"
+      />
+      {NAV_LINKS.map(({ href, label }) => renderLink(href, label))}
+      <SignOutButton />
     </div>
   );
 };

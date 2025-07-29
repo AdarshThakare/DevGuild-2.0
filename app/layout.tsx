@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins, Outfit } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "../components/ThemeProvider";
-import Sidebar from "@/components/navigation/Sidebar";
+import ClientLayout from "@/components/navigation/ClientLayout";
+import ProfileServer from "@/components/navigation/ProfileServer";
 
 const poppins = Poppins({
   weight: ["200", "300", "500", "600", "700", "800"],
@@ -26,18 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.className}  antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="min-h-screen relative">
-            <Sidebar />
-          </div>
-          <div className="">{children}</div>
-        </ThemeProvider>
+      <body className={`${poppins.className} antialiased`}>
+        <ProfileServer />
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

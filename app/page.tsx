@@ -44,7 +44,7 @@ export default function HomePage() {
   const heroOpacity = useTransform(heroProgress, [0, 0.8, 1], [1, 0.95, 0.8]);
 
   const scrollToCTA = () => {
-    //@ts-ignore
+    //@ts-expect-error : Never is not the type
     ctaRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",

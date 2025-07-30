@@ -60,8 +60,8 @@ const CtaSection = ({ ctaRef }: { ctaRef: RefObject<null> }) => {
               className="w-full flex items-center justify-center space-y-2"
             >
               <form className="relative flex flex-col gap-2">
-                <div className="flex gap-10 items-center ">
-                  <p className="text-xl font-lato font-bold text-[#545454] ">
+                <div className="flex flex-col sm:flex-row sm:gap-10 items-center ">
+                  <p className="text-xl font-lato font-bold text-[#545454] dark:text-[#ababab] ">
                     Domain:
                   </p>
                   <div className="flex relative  w-full gap-5 ">
@@ -69,12 +69,12 @@ const CtaSection = ({ ctaRef }: { ctaRef: RefObject<null> }) => {
                     <input
                       type="text"
                       placeholder="Web Development."
-                      className="ps-14 px-5 py-4 my-4 border-2 focus:outline-none w-full md:w-[33rem] text-xl text-black border-[#545454] rounded-full placeholder:font-dmsans placeholder:text-xl"
+                      className="ps-14 px-5 py-4 my-4 border-2 focus:outline-none w-full md:w-[33rem] text-xl text-black border-[#545454] dark:text-[#ababab] rounded-full placeholder:font-dmsans sm:placeholder:text-xl placeholder:text-md"
                     />
                   </div>
                 </div>
-                <div className="flex gap-10 items-center ">
-                  <p className="text-xl font-lato font-bold text-[#545454] ">
+                <div className="flex flex-col sm:flex-row sm:gap-10 items-center ">
+                  <p className="text-xl font-lato font-bold text-[#545454] dark:text-[#ababab] ">
                     Institute:
                   </p>
                   <div className="flex relative  w-full gap-5 ">
@@ -82,13 +82,13 @@ const CtaSection = ({ ctaRef }: { ctaRef: RefObject<null> }) => {
                     <input
                       type="text"
                       placeholder="eg PCCOER"
-                      className="ps-14 px-5 py-4 my-4 border-2 focus:outline-none w-full md:w-[33rem] text-xl text-black border-[#545454] rounded-full placeholder:font-dmsans placeholder:text-xl"
+                      className="ps-14 px-5 py-4 my-4 border-2 focus:outline-none w-full md:w-[33rem] text-xl text-black border-[#545454] dark:text-[#ababab] rounded-full placeholder:font-dmsans sm:placeholder:text-xl placeholder:text-md"
                     />
                   </div>
                 </div>
                 <button
                   type="submit"
-                  className="text-white w-full font-lato bg-gradient-to-r from-blue-600 to-purple-600  dark:from-cyan-500 dark:to-blue-400 hover:from-blue-700 hover:to-purple-700  my-4 py-4 px-3 text-2xl rounded-full"
+                  className="text-white w-full  bg-gradient-to-r from-blue-600 to-purple-600  dark:from-cyan-500 dark:to-blue-400 hover:from-blue-700 hover:to-purple-700  my-4 py-3 sm:py-4 px-3 text-2xl rounded-full"
                 >
                   Search
                 </button>

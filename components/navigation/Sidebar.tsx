@@ -48,7 +48,7 @@ const Sidebar = () => {
         key={href}
         href={href}
         onClick={() => setIsOpen(false)}
-        className={`text-lg ${
+        className={`text-md sm:text-lg ${
           isActive
             ? "font-bold text-black dark:text-white"
             : "text-[#989898] dark:text-gray-400 font-medium"
@@ -79,7 +79,7 @@ const Sidebar = () => {
         alt="DEVELOPERS' GUILD LOGO"
         width={200}
         height={200}
-        className="my-8 ms-5 rounded-4xl"
+        className="my-8 ms-5 max-sm:size-30 rounded-4xl"
       />
       {NAV_LINKS.map(({ href, label }) => renderLink(href, label))}
       <SignOutButton />

@@ -20,7 +20,7 @@ export default function SignInButton() {
           loading="lazy"
           alt="google logo"
         />
-        <span>Continue with Google</span>
+        <span className="hidden md:block">Continue with Google</span>
       </button>
     </form>
   );

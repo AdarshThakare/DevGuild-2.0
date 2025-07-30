@@ -4,10 +4,9 @@ import { useEffect } from "react";
 import useAuthStore from "@/app/store/AuthStore"; // Zustand store
 import Image from "next/image";
 import { signIn } from "next-auth/react";
+import { User } from "@/app/types/user";
 
-export default function ProfileButton() {
-  const user = useAuthStore((state) => state.user);
-
+export default function ProfileButton({ user }: { user: User | null }) {
   return (
     <div className="flex items-center gap-2">
       {user ? (

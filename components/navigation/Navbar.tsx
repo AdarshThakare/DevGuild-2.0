@@ -1,14 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ModeToggle } from "../ModeToggle";
-import { useTheme } from "next-themes";
 
 import { useSidebarStore } from "@/app/store/SidebarStore";
 import { Menu, Plus } from "lucide-react";
-import { signIn } from "next-auth/react";
 import SignInButton from "./SignInButton";
+import { User } from "@/app/types/user";
+import ProfileButton from "./ProfileButton";
 
-export default function Navbar() {
+export default function Navbar({ user }: { user: User | null }) {
   const { toggleSidebar } = useSidebarStore();
 
   return (
@@ -39,16 +38,18 @@ export default function Navbar() {
       {/* Right: Actions */}
       <div className="flex items-center gap-4">
         <ModeToggle />
-        <button
-          //   onClick={() => {
-          //     router.push(`/project/create/${user?.id}`);
-          //   }}
-          className="bg-[#416dff] hover:bg-[#375cd4] text-white px-4 py-[8px] rounded-md flex items-center gap-2"
-        >
-          <Plus />
-          <span>Create Project</span>
-        </button>
-        <SignInButton />
+        {user && (
+          <button
+            //   onClick={() => {
+            //     router.push(`/project/create/${user?.id}`);
+            //   }}
+            className="bg-[#416dff] hover:bg-[#375cd4] text-white px-4 py-[8px] rounded-md flex items-center gap-2"
+          >
+            <Plus />
+            <span>Create Project</span>
+          </button>
+        )}
+        {user ? <ProfileButton user={user} /> : <SignInButton />}
       </div>
     </nav>
   );

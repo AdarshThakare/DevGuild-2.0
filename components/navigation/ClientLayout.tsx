@@ -4,6 +4,7 @@ import { ThemeProvider } from "../ThemeProvider";
 import Sidebar from "@/components/navigation/Sidebar";
 import Navbar from "@/components/navigation/Navbar";
 import { User } from "@/app/types/user";
+import useAuthStore from "@/app/store/AuthStore";
 
 export default function ClientLayout({
   children,

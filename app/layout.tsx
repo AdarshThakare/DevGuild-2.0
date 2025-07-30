@@ -3,6 +3,7 @@ import { Poppins, Outfit } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/navigation/ClientLayout";
 import { auth } from "@/auth";
+import useAuthStore from "./store/AuthStore";
 
 const poppins = Poppins({
   weight: ["200", "300", "500", "600", "700", "800"],
